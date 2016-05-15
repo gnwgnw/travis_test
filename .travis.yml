@@ -1,3 +1,5 @@
+sudo: required
+dist: trusty
 language: cpp
 compiler: gcc
 script: cmake
@@ -8,3 +10,13 @@ script:
 - cmake ./
 - make all
 - timeout 10m ./travis_test secret_data.txt
+addons:
+  apt:
+    sources:
+    # add PPAs with more up-to-date toolchains
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.6
+    packages:
+    # install toolchains
+    - gcc-5
+    - g++-5
