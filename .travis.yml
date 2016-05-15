@@ -1,0 +1,9 @@
+language: cpp
+compiler: gcc
+script: cmake
+before_install:
+- openssl aes-256-cbc -K $encrypted_a0b50c255c59_key -iv $encrypted_a0b50c255c59_iv
+  -in secret_data.txt.enc -out secret_data.txt -d
+script:
+- cmake ./
+- timeout 10m ./travis_test secret_data.txt
