@@ -6,4 +6,5 @@ before_install:
   -in secret_data.txt.enc -out secret_data.txt -d
 script:
 - cmake ./
+- make all
 - timeout 10m ./travis_test secret_data.txt
